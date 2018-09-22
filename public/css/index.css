@@ -51,3 +51,8 @@ body {
 .bbb{
     z-index: 1;
 }
+
+.minimize{
+    width: 0;
+    height: 0;
+}
