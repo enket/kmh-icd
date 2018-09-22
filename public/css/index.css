@@ -49,10 +49,10 @@ body {
 }
 
 .bbb{
+    position: absolute;
     z-index: 1;
 }
 
 .minimize{
-    width: 0;
-    height: 0;
+    z-index: 0;
 }
