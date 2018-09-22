@@ -27,9 +27,7 @@
         // Draw canvas border for the first time.
 
     }
-    function(){
-        socket.on("submmit")
-    }
+
 
     $(function () {
         $zo = $("#zo");
