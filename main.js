@@ -25,7 +25,7 @@ io.on('connection', function (socket) {
 
     socket.on('draw', function (msg) {
         console.log(msg);
-        socket.broadcast.emit('draw', msg)
+        io.sockets.emit('draw2', msg);
     })
 });
 

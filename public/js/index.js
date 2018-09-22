@@ -4,16 +4,90 @@
     var socket = io();
     var dist = 10.0;
     var alphaOffset = null;
-
+    var pointPrevious = {
+        "pointX": 0.0,
+        "pointY": 0.0
+    }
+    var pointNow = {
+        "pointX": 0.0,
+        "pointY": 0.0
+    }
+    function noscroll() {
+        window.scrollTo( 0, 0 );
+    }
+    //$('body').bind('touchmove', function(e){e.preventDefault()});
     $(window).on('touchmove.noScroll', function (e) {
         e.preventDefault();
     });
 
+    function initialize() {
+        // Register an event listener to call the resizeCanvas() function
+        // each time the window is resized.
+
+        // Draw canvas border for the first time.
+
+    }
+
     $(function () {
         $zo = $("#zo");
-        window.addEventListener("deviceorientation", deviceorientationHandler);
+
+        // add listener to disable scroll
+        window.addEventListener('scroll', noscroll);
+
+        //window.addEventListener("deviceorientation", deviceorientationHandler);
+        var el = document.getElementsByTagName("canvas")[0];
+        var ctx = el.getContext("2d");
+        ctx.width = window.innerWidth;
+        ctx.height = window.innerHeight;
+
+        el.addEventListener("touchstart", handleStart, false);
+        //el.addEventListener("touchend", handleEnd, false);
+        el.addEventListener("touchmove", handleMove, false);
+        socket.on('draw2', function (msg) {
+            //console.log("hahahahhahahhahh");
+            var el = document.getElementsByTagName("canvas")[0];
+            var ctx = el.getContext("2d");
+            ctx.beginPath();
+            ctx.moveTo(msg.PreX, msg.PreY);
+            ctx.lineTo(msg.NowX, msg.NowY);
+            ctx.stroke();
+        });
     });
 
+    function handleStart(evt) {
+
+        console.log("touchstart.");
+        var el = document.getElementsByTagName("canvas")[0];
+        var ctx = el.getContext("2d");
+        var touches = evt.changedTouches;
+        pointPrevious.pointX = touches[0].pageX;
+        pointPrevious.pointY = touches[0].pageY;
+        socket.emit('draw', {
+            "touchX": touches[0].pageX,
+            "touchY": touches[0].pageY
+        });
+    }
+
+    function handleMove(evt) {
+        var el = document.getElementsByTagName("canvas")[0];
+        var ctx = el.getContext("2d");
+        var touches = evt.changedTouches;
+        evt.preventDefault();
+        for (var i = 0; i < touches.length; i++) {
+            pointNow.pointX = touches[i].pageX;
+            pointNow.pointY = touches[i].pageY;
+
+            socket.emit('draw', {
+                "PreX": pointPrevious.pointX,
+                "PreY": pointPrevious.pointY,
+                "NowX": pointNow.pointX,
+                "NowY": pointNow.pointY
+            });
+            pointPrevious.pointX = pointNow.pointX;
+            pointPrevious.pointY = pointNow.pointY;
+
+        }
+    }
 
     $(function () {
         $('#slider').slider({
@@ -30,33 +104,5 @@
      *
      * @param event
      */
-    function deviceorientationHandler(event) {
-        if (alphaOffset == null){
-            alphaOffset = event.alpha;
-        }
-        //ジャイロセンサー情報取得
-        // X軸
-        var beta = event.beta;
-        // Y軸
-        var gamma = event.gamma;
-        // Z軸
-        var alpha = (event.alpha + 360 - alphaOffset) % 360;
-        var html = "";
-        html += "X回転 : " + beta + "<br>";
-        html += "Y回転 : " + gamma + "<br>";
-        html += 'Z回転 : ' + alpha + "<br>";
-        html += 'Distance : ' + dist;
-        socket.emit('params', {
-            "beta": beta,
-            "gamma": gamma,
-            "alpha": alpha,
-            "dist": dist
-        });
-        $("#debug").html(html);
 
-        $zo.css({
-            "-webkit-transform": "rotateX(" + (180 + beta) + "deg) rotateY(" + (180 + gamma) + "deg) rotateZ(" + (180 + alpha) + "deg)",
-            "transform": "rotateX(" + (180 + beta) + "deg) rotateY(" + (180 + gamma) + "deg) rotateZ(" + (180 + alpha) + "deg)"
-        })
-    }
 })();
