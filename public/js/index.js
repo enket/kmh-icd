@@ -36,10 +36,19 @@
         window.addEventListener('scroll', noscroll);
 
         //window.addEventListener("deviceorientation", deviceorientationHandler);
-        var el = document.getElementsByTagName("canvas")[0];
-        var ctx = el.getContext("2d");
-        ctx.width = window.innerWidth;
-        ctx.height = window.innerHeight;
+        // var el = document.getElementsByTagName("canvas")[0];
+        // var ctx = el.getContext("2d");
+        // ctx.width = window.innerWidth;
+        // ctx.height = window.innerHeight;
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var canvasOffset = $("#canvas").offset();
+        var offsetX = canvasOffset.left;
+        var offsetY = canvasOffset.top;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         el.addEventListener("touchstart", handleStart, false);
         //el.addEventListener("touchend", handleEnd, false);
