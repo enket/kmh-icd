@@ -80,7 +80,7 @@
             flag = !flag;
             if (flag){
                 openFullscreen();
-                document.getElementById("screenCont").innerHTML = "exitFullScreen"
+                document.getElementById("screenCont").innerHTML = "exitFullScreen";
             }else{
                 closeFullscreen();
                 document.getElementById("screenCont").innerHTML = "FullScreen";
@@ -100,9 +100,7 @@
                 elem.webkitRequestFullscreen();
             } else if (elem.msRequestFullscreen) { /* IE/Edge */
                 elem.msRequestFullscreen();
-            }
-            document.getElementById("buto").innerHTML= "test";
-        }
+            }        }
 
         /* Close fullscreen */
         function closeFullscreen() {
