@@ -49,5 +49,10 @@ body {
 }
 
 .bbb{
+    position: absolute;
     z-index: 1;
+}
+
+.minimize{
+    z-index: 0;
 }

@@ -47,38 +47,6 @@
 
 <button onclick="openFullscreen()">Go fullscreen</button>
 <button onclick="closeFullscreen()">Exp fullscreen</button>
-<script>
-    /* Get the documentElement (<html>) to display the page in fullscreen */
-    var elem = document.documentElement;
-
-    /* View in fullscreen */
-    function openFullscreen() {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { /* Firefox */
-            elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE/Edge */
-            elem.msRequestFullscreen();
-        }
-    }
-
-    /* Close fullscreen */
-    function closeFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { /* Firefox */
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE/Edge */
-            document.msExitFullscreen();
-        }
-    }
-</script>
-
-
 
 <var class="bbb">
         <canvas id='canvas' name = 'canvas'></canvas>
@@ -88,7 +56,7 @@
                 <!-- Video area -->
                 <div class="pure-u-2-3" id="video-container">
                     <video id="their-video" autoplay></video>
-                    <video id="my-video" muted="true" autoplay style="z-index:0;"></video>
+                    <div class="minimize"><video id="my-video" muted="true" autoplay></video></div>
                 </div>
             
                 <!-- Steps -->
@@ -109,4 +77,34 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
 <script type="text/javascript" src="./videochat/script.js"></script>
+<script>
+        /* Get the documentElement (<html>) to display the page in fullscreen */
+        var elem = document.documentElement;
+    
+        /* View in fullscreen */
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+    
+        /* Close fullscreen */
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
+    </script>
 </html>
