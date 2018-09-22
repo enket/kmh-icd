@@ -4,7 +4,8 @@ let localStream = null;
 let peer = null;
 let existingCall = null;
 
-navigator.mediaDevices.getUserMedia({video: { width: 320, height: 240 }, audio: true})
+navigator.mediaDevices.getUserMedia({video: {     width: { min: 100, ideal: 320, max: 500 },
+        height: { min: 100, ideal: 240, max: 500 } }, audio: true})
     .then(function (stream) {
         // Success
         $('#my-video').get(0).srcObject = stream;
