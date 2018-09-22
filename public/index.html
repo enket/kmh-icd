@@ -45,9 +45,7 @@
 </head>
 <body>
 
-<button onclick="openFullscreen()">Go fullscreen</button>
-<button onclick="closeFullscreen()">Exp fullscreen</button>
-
+<button id = "screenCont"  onclick="buttonCont()"> FullScreen </button>
 <var class="bbb">
         <canvas id='canvas' name = 'canvas'></canvas>
 </var>
@@ -78,6 +76,18 @@
 <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
 <script type="text/javascript" src="./videochat/script.js"></script>
 <script>
+        let flag = false;
+        function buttonCont(){
+            flag = !flag;
+            if (flag){
+                openFullscreen();
+                document.getElementById("screenCont").innerHTML = "exitFullScreen"
+            }else{
+                closeFullscreen();
+                document.getElementById("screenCont").innerHTML = "FullScreen";
+            }
+        }
+
         /* Get the documentElement (<html>) to display the page in fullscreen */
         var elem = document.documentElement;
     
@@ -92,8 +102,9 @@
             } else if (elem.msRequestFullscreen) { /* IE/Edge */
                 elem.msRequestFullscreen();
             }
+            document.getElementById("buto").innerHTML= "test";
         }
-    
+
         /* Close fullscreen */
         function closeFullscreen() {
             if (document.exitFullscreen) {
