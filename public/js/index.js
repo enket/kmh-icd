@@ -36,7 +36,7 @@
         window.addEventListener('scroll', noscroll);
 
         //window.addEventListener("deviceorientation", deviceorientationHandler);
-        // var el = document.getElementsByTagName("canvas")[0];
+         var el = document.getElementsByTagName("canvas")[0];
         // var ctx = el.getContext("2d");
         // ctx.width = window.innerWidth;
         // ctx.height = window.innerHeight;
