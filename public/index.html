@@ -13,20 +13,6 @@
     <script src="/common/js/jquery.ui.touch-punch.min.js"></script>
     <script src="/common/js/socket.io.js"></script>
     <script src="/js/index.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: ivory;
-        }
-
-        #canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 1px solid red;
-        }
-    </style>
     <script>
         $(function () {
             var img = new Image();
@@ -58,7 +44,22 @@
 </head>
 <body>
 
-<canvas id='canvas' name = 'canvas' width:100%; height:100%>
-</canvas>
+<canvas id='canvas' name = 'canvas'></canvas>
+<var>
+        <video id="their-video" autoplay></video>
+</var>
+<var>
+        <p>Your id: <span id="my-id">...</span></p>
+        <form id="make-call" class="pure-form">
+            <input type="text" placeholder="Call user id..." id="callto-id">
+            <button href="#" class="pure-button pure-button-success" type="submit">Call</button>
+        </form>
+        <form id="end-call" class="pure-form">
+            <button href="#" class="pure-button pure-button-success" type="submit">End Call</button>
+        </form>
+</var>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+<script type="text/javascript" src="./videochat/script.js"></script>
 </html>
