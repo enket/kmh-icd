@@ -21,6 +21,7 @@ peer = new Peer('haha');
 });*/
 
 peer.on('open', function(){
+    console.log("open my id");
     $('#my-id').text(peer.id);
 });
 
@@ -29,18 +30,22 @@ peer.on('error', function(err){
 });
 
 peer.on('close', function(){
+    console.log("open close");
 });
 
 peer.on('disconnected', function(){
+    console.log("open disconnect");
 });
 
 $('#make-call').submit(function(e){
     e.preventDefault();
+    console.log("open summit");
     const call = peer.call($('#callto-id').val(), localStream);
     setupCallEventHandlers(call);
 });
 
 $('#end-call').click(function(){
+    console.log("open end call");
     existingCall.close();
 });
 
@@ -68,19 +73,23 @@ function setupCallEventHandlers(call){
 }
 
 function addVideo(call,stream){
+    console.log("open addvideo");
     $('#their-video').get(0).srcObject = stream;
 }
 
 function removeVideo(peerId){
+    console.log("open removevideo");
     $('#'+peerId).remove();
 }
 
 function setupMakeCallUI(){
+    console.log("open setupMakeCallUI");
     $('#make-call').show();
     $('#end-call').hide();
 }
 
 function setupEndCallUI() {
+    console.log("open setupEndCallUI");
     $('#make-call').hide();
     $('#end-call').show();
 }
