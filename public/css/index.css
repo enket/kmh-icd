@@ -11,6 +11,7 @@ body {
 
 #canvas {
     position: absolute;
+    background-color: white;
     border: 1px solid red;
 }
 
@@ -48,5 +49,5 @@ body {
 }
 
 .bbb{
-    z-index: 0;
+    z-index: 1;
 }
