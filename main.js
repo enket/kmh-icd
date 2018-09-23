@@ -14,7 +14,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('params', function (msg) {
-        console.log(msg);
+        //console.log(msg);
         socket.broadcast.emit('orientationForUnity', {
             "beta": msg.beta,
             "gamma": msg.gamma,
@@ -24,7 +24,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('draw', function (msg) {
-        console.log(msg);
+        //console.log(msg);
         io.sockets.emit('draw2', msg);
     })
 });

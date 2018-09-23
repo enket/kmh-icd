@@ -58,8 +58,8 @@
             var el = document.getElementsByTagName("canvas")[0];
             var ctx = el.getContext("2d");
             ctx.beginPath();
-            ctx.moveTo(msg.PreX, msg.PreY);
-            ctx.lineTo(msg.NowX, msg.NowY);
+            ctx.moveTo(msg.PreX, msg.PreY - 30);
+            ctx.lineTo(msg.NowX, msg.NowY - 30);
             ctx.stroke();
         });
     });
@@ -83,6 +83,7 @@
         var ctx = el.getContext("2d");
         var touches = evt.changedTouches;
         evt.preventDefault();
+        console.log(touches[0]);
         for (var i = 0; i < touches.length; i++) {
             pointNow.pointX = touches[i].pageX;
             pointNow.pointY = touches[i].pageY;

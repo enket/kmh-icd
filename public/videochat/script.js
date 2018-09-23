@@ -22,7 +22,7 @@ peer = new Peer({
 });
 
 peer.on('open', function(){
-    console.log("open my id");
+    //console.log("open my id");
     $('#my-id').text(peer.id);
 });
 
@@ -31,11 +31,11 @@ peer.on('error', function(err){
 });
 
 peer.on('close', function(){
-    console.log("open close");
+    //console.log("open close");
 });
 
 peer.on('disconnected', function(){
-    console.log("open disconnect");
+    //console.log("open disconnect");
 });
 
 $('#make-call').submit(function(e){
@@ -46,7 +46,7 @@ $('#make-call').submit(function(e){
 });
 
 $('#end-call').click(function(){
-    console.log("open end call");
+    //console.log("open end call");
     existingCall.close();
 });
 
@@ -74,7 +74,7 @@ function setupCallEventHandlers(call){
 }
 
 function addVideo(call,stream){
-    console.log("open addvideo");
+    //console.log("open addvideo");
     $('#their-video').get(0).srcObject = stream;
 }
 
@@ -84,13 +84,13 @@ function removeVideo(peerId){
 }
 
 function setupMakeCallUI(){
-    console.log("open setupMakeCallUI");
+    //console.log("open setupMakeCallUI");
     $('#make-call').show();
     $('#end-call').hide();
 }
 
 function setupEndCallUI() {
-    console.log("open setupEndCallUI");
+    //console.log("open setupEndCallUI");
     $('#make-call').hide();
     $('#end-call').show();
 }
