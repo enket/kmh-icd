@@ -73,10 +73,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
     height: 100%;
     pointer-events: none;
 }
-
+.pure-u-2-3{
+    position: relative;
+}
 .pure-g {
     float: right;
     position: absolute;
+    height: 407px;
     bottom: 0px;
     right: 0px;
     pointer-events: none;
