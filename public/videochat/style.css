@@ -48,6 +48,10 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 #their-video {
     width: 320px;
     height: 180px;
+    float: right;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     background-color: #eee;
 }
 
@@ -72,6 +76,6 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .pure-g {
     float: right;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 0px;
+    right: 0px;
 }
